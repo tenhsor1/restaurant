@@ -1,18 +1,18 @@
 package views;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JPanel;
-import java.awt.Toolkit;
+import javax.swing.JSplitPane;
 
 public class VMain {
 
 	private JFrame frame;
-
+	private JSplitPane splitPane;
 	/**
 	 * Launch the application.
 	 */
@@ -45,15 +45,29 @@ public class VMain {
 		
 		frame = new JFrame("Chez Michel - Panel de Control");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VMain.class.getResource("/assets/restaurant.png")));
-		frame.getContentPane().setBackground(new Color(204, 204, 204));
 		frame.setBackground(Color.GRAY);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setLocationRelativeTo(null);
+		frame.setMinimumSize(new Dimension(800, 500));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[][grow][][][][][][grow]", "[][][][][][][][][grow][][][grow]"));
 		
-		JPanel panel_1 = new JPanel();
-		frame.getContentPane().add(panel_1, "cell 1 11,grow");
+		splitPane = new JSplitPane();
+		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 	}
 
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JSplitPane getSplitPane() {
+		return splitPane;
+	}
+
+	public void setSplitPane(JSplitPane splitPane) {
+		this.splitPane = splitPane;
+	}
 }

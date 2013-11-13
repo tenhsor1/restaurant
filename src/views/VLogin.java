@@ -70,6 +70,7 @@ public class VLogin {
 		
 		txtUsuario = new JTextField();
 		txtUsuario.setToolTipText("Ingresa tu Nombre de Usuario");
+		
 		frame.getContentPane().add(txtUsuario, "cell 1 1 7 1,growx");
 		txtUsuario.setColumns(10);
 		

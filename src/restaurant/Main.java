@@ -20,7 +20,6 @@ public class Main {
 			vLogin = new VLogin();
 			cLogin = new CLogin(vLogin, usuarios);
 			cLogin.iniciarVista();
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

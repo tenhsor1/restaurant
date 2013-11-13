@@ -27,11 +27,11 @@ public class CLogin implements ActionListener{
 		usuario = this.modelo.authUsuario(this.vista.getTxtUsuario().getText(), this.vista.getTxtPassword().getText());
 		if(usuario != null){
 			this.vista.close();
-			CMain.main(null);
+			CMain cMain = new CMain();
+			cMain.iniciar();
 		}else{
 			this.vista.getLblMensaje().setText("El usuario o contraseña no es correcto.");
 		}
 		this.vista.getLblMensaje().setVisible(true);
 	}
-
 }
