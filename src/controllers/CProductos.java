@@ -36,6 +36,7 @@ public class CProductos implements ActionListener{
 	private Producto selectedProducto;
 	private Categoria selectedCategoria;
 	private JDBC conn;
+	private int banderaVentana = 0;
 	private JButton btnEditar, btnEliminar, btnNuevoProducto, btnNuevaCategoria, btnOkNuevo, btnOkEditar, btnOkNuevoCat, btnOkEditarCat;
 	private VFormProducto panelProducto;
 	private VFormCategoria panelCategoria;
@@ -186,6 +187,7 @@ public class CProductos implements ActionListener{
 		
 		btnOkNuevo = panelProducto.getOkButton();
 		btnOkNuevo.addActionListener(this);
+		banderaVentana = 1;
 	}
 	
 	private void editProducto(int idproducto) throws SQLException{
@@ -199,7 +201,7 @@ public class CProductos implements ActionListener{
 		
 		btnOkEditar = panelProducto.getOkButton();
 		btnOkEditar.addActionListener(this);
-	
+		banderaVentana = 2;
 	}
 	
 	private void nuevaCategoria(){
@@ -209,6 +211,7 @@ public class CProductos implements ActionListener{
 		
 		btnOkNuevoCat = panelCategoria.getOkButton();
 		btnOkNuevoCat.addActionListener(this);
+		banderaVentana = 1;
 	}
 	
 	private void editCategoria(int idcategoria) throws SQLException{
@@ -221,7 +224,7 @@ public class CProductos implements ActionListener{
 		
 		btnOkEditarCat = panelCategoria.getOkButton();
 		btnOkEditarCat.addActionListener(this);
-	
+		banderaVentana = 2;
 	}
 	
 	
@@ -240,7 +243,7 @@ public class CProductos implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(btnOkNuevo)){
+		if(e.getSource().equals(btnOkNuevo) && banderaVentana == 1){
 			String nomProducto = panelProducto.getTxtProducto().getText();
 			if(nomProducto.equals("") || nomProducto == null){
 				panelProducto.getTxtProducto().setBorder(BorderFactory.createLineBorder(Color.red));
@@ -253,19 +256,20 @@ public class CProductos implements ActionListener{
 				panelProducto.getTxtProducto().setText("");
 				panelProducto.getTxtProducto().requestFocus();
 			}
-		}else if(e.getSource().equals(btnOkEditar)){
+		}else if(e.getSource().equals(btnOkEditar) && banderaVentana == 2){
 			String nomProducto = panelProducto.getTxtProducto().getText();
 			if(nomProducto.equals("") || nomProducto == null){
 				panelProducto.getTxtProducto().setBorder(BorderFactory.createLineBorder(Color.red));
 				panelProducto.getTxtProducto().requestFocus();
 			}else{
+				System.out.println("entra");
 				Item selectedCategoria = (Item) panelProducto.getCmbCategoria().getSelectedItem();
 				selectedProducto.setProducto(nomProducto);
 				selectedProducto.setIdcategoria(selectedCategoria.getId());
 				tablaProductos.setModel(nuevoModeloTabla(getDataProductos(), columnasProductos));
 				panelProducto.setVisible(false);
 			}
-		}else if(e.getSource().equals(btnOkNuevoCat)){
+		}else if(e.getSource().equals(btnOkNuevoCat) && banderaVentana == 1){
 			String nomCategoria = panelCategoria.getTxtCategoria().getText();
 			if(nomCategoria.equals("") || nomCategoria == null){
 				panelProducto.getTxtProducto().setBorder(BorderFactory.createLineBorder(Color.red));
@@ -277,7 +281,7 @@ public class CProductos implements ActionListener{
 				panelCategoria.getTxtCategoria().setText("");
 				panelCategoria.getTxtCategoria().requestFocus();
 			}
-		}else if(e.getSource().equals(btnOkEditarCat)){
+		}else if(e.getSource().equals(btnOkEditarCat) && banderaVentana == 2){
 			String nomCategoria = panelCategoria.getTxtCategoria().getText();
 			if(nomCategoria.equals("") || nomCategoria == null){
 				panelCategoria.getTxtCategoria().setBorder(BorderFactory.createLineBorder(Color.red));

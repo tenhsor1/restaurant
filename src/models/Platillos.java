@@ -4,12 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import models.Productos.Producto;
 import conn.JDBC;
 
 public class Platillos {
 
-	private static ResultSet result;
+	private static ResultSet query;
 	private JDBC conn;
 	
 	public Platillos(JDBC conn){
@@ -17,7 +16,6 @@ public class Platillos {
 	}
 	
 	public ArrayList<Platillo> getAllPlatillos(){
-		ResultSet query;
 		query = conn.query("SELECT idplatillo FROM platillos");
 		ArrayList<Platillo> platillos = new ArrayList<Platillo>();
 		
@@ -32,33 +30,89 @@ public class Platillos {
 		}
 	}
 	
+	public ArrayList<Unidad> getAllUnidades(){
+		ArrayList<Unidad> unidades = new ArrayList<Unidad>();
+		query = this.conn.query("SELECT idunidad, unidad FROM unidades"); 
+		try {
+			while(query.next()){
+				unidades.add(new Unidad(query.getInt("idunidad"), query.getString("unidad"))); 
+			}
+			return unidades;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public int deletePlatillo(Platillo platillo){
+		String sql = "DELETE FROM platillos WHERE idplatillo = " + platillo.getIdplatillo();
+		int band1 = this.conn.queryUpdate(sql);
+		sql = "DELETE FROM producto_platillo WHERE idplatillo = " + platillo.getIdplatillo();
+		int band2 = this.conn.queryUpdate(sql);
+		return band1 + band2;
+	}
+	
 	public static class Platillo{
 		
 		private JDBC conn;
 		private int idplatillo;
 		private String platillo;
+		private float precio;
 		private ArrayList<ProdPlatillo> productos_platillo;
-		private ResultSet query;
-		
+		private ResultSet idp, query;
+		private int results;
 		public Platillo(JDBC conn, int idplatillo){
 			this.conn = conn;
-			query = this.conn.query("SELECT idplatillo, platillo FROM platillos WHERE idplatillo = " + idplatillo); 
+			query = this.conn.query("SELECT idplatillo, platillo, precio FROM platillos WHERE idplatillo = " + idplatillo); 
 			try {
 				if(query.next()){
 					this.idplatillo = idplatillo;
 				 	platillo = query.getString("platillo");
+				 	precio = query.getFloat("precio");
 				 	this.productos_platillo = getProdPlatillosDB();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
+
+		public Platillo(JDBC conn, String platillo, float precio, ArrayList<ProdPlatillo> prod_platillos){
+			this.conn = conn;
+			String sql = "INSERT INTO platillos (platillo, precio) VALUES('" + platillo+ "', " + precio  +")";
+			results = this.conn.queryUpdate(sql);
+			if(results > 0){
+				this.platillo = platillo;
+				this.precio = precio;
+				idp = this.conn.query("SELECT MAX(idplatillo) AS idplatillo FROM platillos");
+				try {
+					if(idp.next())
+						idplatillo = idp.getInt("idplatillo");
+					
+					for(final ProdPlatillo pp : prod_platillos){
+						if(pp.idproducto != 0){
+							sql = "INSERT INTO producto_platillo (idplatillo, idproducto, cantidad, idunidad) "
+								+ "VALUES(" + idplatillo + ", " + pp.idproducto + ", " 
+								+ pp.cantidad + ", " + pp.idunidad   + ")";
+							results = this.conn.queryUpdate(sql);
+						}
+					}
+					this.productos_platillo = prod_platillos;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		private ArrayList<ProdPlatillo> getProdPlatillosDB(){
 			ArrayList<ProdPlatillo> productos = new ArrayList<ProdPlatillo>();
-			query = this.conn.query("SELECT idproducto, idunidad, cantidad FROM producto_platillo WHERE idplatillo = " + this.idplatillo); 
+			query = this.conn.query("SELECT idproducto_platillo, productos.idproducto, unidades.idunidad, cantidad, producto, unidad "
+									+ "FROM producto_platillo LEFT JOIN productos ON producto_platillo.idproducto = productos.idproducto "
+									+ "LEFT JOIN unidades ON producto_platillo.idunidad = unidades.idunidad " 	
+									+ "WHERE idplatillo = " + this.idplatillo); 
 			try {
 				while(query.next()){
-					productos.add(new ProdPlatillo(query.getInt("idproducto"), query.getInt("idunidad"), query.getFloat("cantidad"))); 
+					productos.add(new ProdPlatillo(query.getInt("idproducto_platillo"), query.getInt("idproducto"), 
+							query.getInt("idunidad"), query.getFloat("cantidad"), query.getString("producto"), query.getString("unidad"))); 
 				}
 				return productos;
 			} catch (SQLException e) {
@@ -67,131 +121,99 @@ public class Platillos {
 			}
 		}
 		
+		
+		
 		public int getIdplatillo() {
 			return idplatillo;
 		}
-		public void setIdplatillo(int idplatillo) {
-			this.idplatillo = idplatillo;
-		}
+
 		public String getPlatillo() {
 			return platillo;
 		}
 		public void setPlatillo(String platillo) {
-			this.platillo = platillo;
+			results = conn.queryUpdate("UPDATE platillos SET platillo = '" + 
+					platillo + "' WHERE idplatillo = " + idplatillo);
+						if(results > 0){
+							this.platillo = platillo;
+			}
 		}
+		
+		public float getPrecio() {
+			return precio;
+		}
+
+		public void setPrecio(float precio) {
+			results = conn.queryUpdate("UPDATE platillos SET precio = '" + 
+					precio + "' WHERE idplatillo = " + idplatillo);
+						if(results > 0){
+							this.precio = precio;
+			}
+		}
+		
 		public ArrayList<ProdPlatillo> getProductos_platillo() {
 			return productos_platillo;
 		}
 		public void setProductos_platillo(ArrayList<ProdPlatillo> productos_platillo) {
+			ArrayList<ProdPlatillo> errorProd = new ArrayList<ProdPlatillo>();
+			for(ProdPlatillo pp : productos_platillo){
+				if(pp.idproducto != 0){
+					if(pp.idproducto_platillo != 0){
+						results = conn.queryUpdate("UPDATE producto_platillo SET idproducto = " + 
+								pp.idproducto + ", cantidad = " + pp.cantidad + ", idunidad = " + pp.idunidad
+								+ " WHERE idproducto_platillo = " + pp.idproducto_platillo);
+					}else{
+						String sql = "INSERT INTO producto_platillo (idplatillo, idproducto, cantidad, idunidad) "
+								+ "VALUES(" + idplatillo + ", " + pp.idproducto + ", " 
+								+ pp.cantidad + ", " + pp.idunidad   + ")";
+							results = this.conn.queryUpdate(sql);
+						sql = "SELECT MAX(idproducto_platillo) AS idproducto_platillo FROM producto_platillo WHERE idplatillo = " + idplatillo;
+						query = this.conn.query(sql);
+						try {
+							if(query.next()){
+								pp.idproducto_platillo = query.getInt("idproducto_platillo");
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				}else{
+					errorProd.add(pp);
+				}
+			}
+			for(ProdPlatillo p : errorProd){
+				productos_platillo.remove(p);
+			}
 			this.productos_platillo = productos_platillo;
 		}
 	}
 	
 	
 	public static class ProdPlatillo{
-		public int idproducto, idunidad;
+		public int idproducto, idunidad, idproducto_platillo;
 		public float cantidad;
+		public String producto, unidad;
 		public ProdPlatillo(int idproducto, int idunidad, float cantidad){
 			this.idproducto = idproducto;
 			this.idunidad = idunidad;
 			this.cantidad = cantidad;
 		}
-	}
-	
-	
-	/*
-	public static class ProdPlatillo{
-
-		private int idplatillo, idproducto, idunidad, results, idproducto_platillo;
-		private float cantidad;
-		private String unidad;
-		private JDBC conn;
-		private ResultSet query;
-	
-		public ProdPlatillo(JDBC conn, int idproducto_platillo) throws SQLException{
-			this.conn = conn;
-			 query = this.conn.query("SELECT idplatillo, idproducto, unidades.idunidad, unidad, cantidad "
-			 		+ "FROM producto_platillo LEFT JOIN unidades ON producto_platillo.idunidad = producto_platillo.idunidad" 
-					 +" WHERE idproducto_platillo = "+ idproducto_platillo);
-			 	if(query.next()){
-			 		this.idproducto_platillo = idproducto_platillo;
-			 		idproducto = query.getInt("idproducto");
-				 	idplatillo = query.getInt("idplatillo");
-				 	idunidad = query.getInt("idunidad");
-				 	unidad = query.getString("unidad");
-				 	cantidad = query.getFloat("cantidad");
-			 	}
-		}
-		
-		public ProdPlatillo(JDBC conn, int idplatillo, int idproducto, int idunidad, float cantidad){
-			this.conn = conn;
-		
-			String sql = "INSERT INTO producto_platillo (idplatillo, idproducto, idunidad, cantidad) VALUES(" +
-					idplatillo + ", " + idproducto + ", " + idunidad + ", " + cantidad + ")";
-			results = this.conn.queryUpdate(sql);
-			if(results > 0){
-				this.idplatillo = idplatillo;
-				this.idproducto = idproducto;
-				this.idunidad = idunidad;
-				this.cantidad = cantidad;
-				
-				query = this.conn.query("SELECT MAX(idproducto_platillo) AS idproducto_platillo FROM producto_platillo");
-				try {
-					if(query.next())
-					idproducto_platillo = query.getInt("idproducto_platillo");
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
-		public int getIdplatillo() {
-			return idplatillo;
-		}
-
-		public void setIdplatillo(int idplatillo) {
-			this.idplatillo = idplatillo;
-		}
-
-		public int getIdproducto() {
-			return idproducto;
-		}
-
-		public void setIdproducto(int idproducto) {
-			this.idproducto = idproducto;
-		}
-
-		public int getIdunidad() {
-			return idunidad;
-		}
-
-		public void setIdunidad(int idunidad) {
-			this.idunidad = idunidad;
-		}
-
-		public int getIdproducto_platillo() {
-			return idproducto_platillo;
-		}
-
-		public void setIdproducto_platillo(int idproducto_platillo) {
+		public ProdPlatillo(int idproducto_platillo, int idproducto, int idunidad, float cantidad, String producto, String unidad){
 			this.idproducto_platillo = idproducto_platillo;
-		}
-
-		public float getCantidad() {
-			return cantidad;
-		}
-
-		public void setCantidad(float cantidad) {
+			this.idproducto = idproducto;
+			this.idunidad = idunidad;
 			this.cantidad = cantidad;
-		}
-		
-		public String getUnidad() {
-			return unidad;
-		}
-
-		public void setUnidad(String unidad) {
+			this.producto = producto;
 			this.unidad = unidad;
 		}
 	}
-	*/
+	
+	public static class Unidad{
+		public int idunidad;
+		public String unidad;
+		public Unidad(int idunidad, String unidad){
+			this.idunidad = idunidad;
+			this.unidad = unidad;
+		}
+	}
+	
 }

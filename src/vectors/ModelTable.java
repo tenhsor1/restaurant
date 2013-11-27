@@ -32,3 +32,4 @@ public class ModelTable extends DefaultTableModel {
 	}
 
 }
+
