@@ -45,13 +45,14 @@ public class VMain {
 		
 		frame = new JFrame("Chez Michel - Panel de Control");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VMain.class.getResource("/assets/restaurant.png")));
-		frame.setBackground(Color.GRAY);
+		frame.setBackground(Color.DARK_GRAY);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setLocationRelativeTo(null);
-		frame.setMinimumSize(new Dimension(800, 500));
+		frame.setMinimumSize(new Dimension(1100, 720));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		splitPane = new JSplitPane();
+		splitPane.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 	}
 

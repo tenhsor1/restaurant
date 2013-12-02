@@ -19,10 +19,14 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import vectors.Item;
 import vectors.ModelTable;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VProductos extends JPanel {
 
-	private static final long serialVersionUID = 7267519319005989146L;
+	private static final long serialVersionUID = -3276610171353503066L;
 	private JTable tableProductos, tableCategorias;
 	private JScrollPane scrollPaneProductos, scrollPaneCategorias;
 	private JButton btnNuevoProducto, btnNuevaCategoria;
@@ -30,6 +34,7 @@ public class VProductos extends JPanel {
 	private VFormCategoria panelCategoria;
 	public VProductos() {
 		setLayout(new MigLayout("", "[][][grow][grow]", "[][][][grow]"));
+		setBackground(Color.DARK_GRAY);
 		
 		btnNuevoProducto = new JButton("Nuevo Producto");
 		add(btnNuevoProducto, "cell 2 2");
@@ -38,11 +43,23 @@ public class VProductos extends JPanel {
 		add(btnNuevaCategoria, "cell 4 2");
 		
 		panelProducto = new VFormProducto();
-		panelProducto.setIconImage(Toolkit.getDefaultToolkit().getImage(VProductos.class.getResource("/assets/restaurant.png")));
+		panelProducto.getTxtProducto().addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent evt) {
+				char c = evt.getKeyChar();
+				if((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+					evt.consume();
+
+			}
+			
+		});
+		panelProducto.getOkButton().setFont(new Font("Lato", Font.PLAIN, 11));
+		panelProducto.getTxtProducto().setFont(new Font("Lato", Font.PLAIN, 11));
+		panelProducto.getContentPane().setFont(new Font("Lato", Font.PLAIN, 11));
+		panelProducto.setIconImage(Toolkit.getDefaultToolkit().getImage(VProductos.class.getResource("/assets/wine_big.png")));
 		
 		panelCategoria = new VFormCategoria();
 		panelCategoria.setIconImage(Toolkit.getDefaultToolkit().getImage(VProductos.class.getResource("/assets/restaurant.png")));
-		
 	}
 	
 

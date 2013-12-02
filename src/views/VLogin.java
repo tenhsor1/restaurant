@@ -2,6 +2,7 @@ package views;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -58,14 +59,22 @@ public class VLogin {
 		//inicializamos la ventana, gris, en el centro, con layout Mig
 		frame = new JFrame("Chez Michel - Iniciar Sesión");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VMain.class.getResource("/assets/user.png")));
-		frame.getContentPane().setBackground(new Color(204, 204, 204));
-		frame.setBackground(Color.GRAY);
+		frame.getContentPane().setBackground(Color.DARK_GRAY);
+		frame.setBackground(Color.DARK_GRAY);
 		frame.setSize(450, 170);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][grow][][][][][][grow]", "[][][][][][][][][grow][][][]"));
+		//<Update> Hugo 27/11/2013
+		frame.setResizable(false);
+		//<EndUpdate> Hugo 27/11/2013
+		
 		
 		JLabel lblUsuario = new JLabel("Usuario");
+		//<Update> Hugo 27/11/2013
+		lblUsuario.setForeground(Color.WHITE);
+		lblUsuario.setFont(new Font("Lato", Font.PLAIN, 12));
+		//<EndUpdate> Hugo 27/11/2013
 		frame.getContentPane().add(lblUsuario, "cell 0 1");
 		
 		txtUsuario = new JTextField();
@@ -75,6 +84,10 @@ public class VLogin {
 		txtUsuario.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Contrase\u00F1a");
+		//<Update> Hugo 27/11/2013
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Lato", Font.PLAIN, 12));
+		//<EndUpdate> Hugo 27/11/2013
 		frame.getContentPane().add(lblPassword, "cell 0 3");
 		
 		txtPassword = new JPasswordField();
@@ -83,9 +96,16 @@ public class VLogin {
 		
 		btnIniciar = new JButton("Iniciar Sesi\u00F3n");
 		btnIniciar.setHorizontalAlignment(SwingConstants.RIGHT);
+		//<Update> Hugo 27/11/2013
+		btnIniciar.setFont(new Font("Lato", Font.PLAIN, 11));
+		//<EndUpdate> Hugo 27/11/2013
 		frame.getContentPane().add(btnIniciar, "cell 7 5,alignx right");
 		
 		lblMensaje = new JLabel("", icnAlert, JLabel.RIGHT);
+		//<Update> Hugo 27/11/2013
+		lblMensaje.setForeground(Color.WHITE);
+		lblMensaje.setFont(new Font("Lato", Font.PLAIN, 12));
+		//<EndUpdate> Hugo 27/11/2013
 		lblMensaje.setVisible(false);
 		frame.getContentPane().add(lblMensaje, "cell 0 7 8 1");
 	}

@@ -30,6 +30,7 @@ public class CMain implements ActionListener {
 			vistaMenu.getBtnMPlatillos().addActionListener(this);
 			vistaMenu.getBtnMEmpleados().addActionListener(this);
 			vistaMenu.getBtnMCompras().addActionListener(this);
+			vistaMenu.getBtnMVentas().addActionListener(this);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,6 +42,7 @@ public class CMain implements ActionListener {
 		if(e.getSource().equals(vistaMenu.getBtnMProductos())){
 			CProductos cProducto = new CProductos(vista.getSplitPane(), conn);
 			cProducto.iniciar();
+		
 		}else if(e.getSource().equals(vistaMenu.getBtnMPlatillos())){
 			CPlatillos cPlatillos = new CPlatillos(vista.getSplitPane(), conn);
 			cPlatillos.iniciar();
@@ -48,9 +50,14 @@ public class CMain implements ActionListener {
 		}else if(e.getSource().equals(vistaMenu.getBtnMEmpleados())){
 			CEmpleados cEmpledos = new CEmpleados(vista.getSplitPane(), conn);
 			cEmpledos.iniciar();
+		
 		}else if(e.getSource().equals(vistaMenu.getBtnMCompras())){
 			CCompras cCompras = new CCompras(vista.getSplitPane(), conn);
 			cCompras.iniciar();
+		
+		}else if(e.getSource().equals(vistaMenu.getBtnMVentas())){
+			CVentas cVentas = new CVentas(vista.getSplitPane(), conn);
+			cVentas.iniciar();
 		}
 	}
 }

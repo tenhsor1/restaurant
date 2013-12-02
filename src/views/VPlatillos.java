@@ -106,7 +106,6 @@ public class VPlatillos extends JPanel {
 		gbc_btnGuardar.insets = new Insets(10, 0, 10, 0);
 		paneProducto.add(btnGuardarPlatillo, gbc_btnGuardar);
 				
-	    paneProducto.setVisible(false);
 	}
 
 	public JButton getBtnAddProducto() {

@@ -23,6 +23,9 @@ import models.Productos;
 import models.Productos.Categoria;
 import net.miginfocom.swing.MigLayout;
 import conn.JDBC;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public  class VFormProductos extends JDialog implements  ActionListener{
 
@@ -30,6 +33,7 @@ public  class VFormProductos extends JDialog implements  ActionListener{
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtProducto;
 	private JComboBox<Item> cmbCategoria;
+	private JComboBox<Item> cmbCategoria_1;
 	
 	public static void main(String[] args) {
 		VFormProductos v = new VFormProductos();
@@ -38,20 +42,27 @@ public  class VFormProductos extends JDialog implements  ActionListener{
 	}
 
 	public VFormProductos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VFormProductos.class.getResource("/assets/wine_big.png")));
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.DARK_GRAY);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new MigLayout("", "[][][][grow]", "[][][][]"));
 
 		JLabel lblProducto = new JLabel("Producto");
+		lblProducto.setForeground(Color.WHITE);
+		lblProducto.setFont(new Font("Lato", Font.PLAIN, 12));
 		contentPanel.add(lblProducto, "cell 1 1");
 			
 		txtProducto = new JTextField();
+		txtProducto.setFont(new Font("Lato", Font.PLAIN, 12));
 		txtProducto.setToolTipText("Nuevo Producto");
-		contentPanel.add(txtProducto, "cell 3 1,growx");
+		contentPanel.add(txtProducto, "cell 2 1 2 1,growx");
 
 		JLabel lblCategoria = new JLabel("Categor\u00EDa");
+		lblCategoria.setForeground(Color.WHITE);
+		lblCategoria.setFont(new Font("Lato", Font.PLAIN, 12));
 		contentPanel.add(lblCategoria, "cell 1 3");
 
 		ArrayList<Categoria> categorias;
@@ -68,10 +79,11 @@ public  class VFormProductos extends JDialog implements  ActionListener{
 			}
 			cmbCategoria = new JComboBox<Item>(model);
 			cmbCategoria.setToolTipText("Selecciona una categor\u00EDa");
-			cmbCategoria = new JComboBox<Item>( model );
-			cmbCategoria.addActionListener( this );
-			cmbCategoria.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
-			contentPanel.add(cmbCategoria, "cell 3 3,growx");
+			cmbCategoria_1 = new JComboBox<Item>( model );
+			cmbCategoria_1.setFont(new Font("Lato", Font.PLAIN, 12));
+			cmbCategoria_1.addActionListener( this );
+			cmbCategoria_1.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
+			contentPanel.add(cmbCategoria_1, "cell 2 3 2 1,growx");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,14 +92,18 @@ public  class VFormProductos extends JDialog implements  ActionListener{
 
 
 		JPanel buttonPane = new JPanel();
+		buttonPane.setBackground(Color.DARK_GRAY);
+		buttonPane.setForeground(Color.WHITE);
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		
 		JButton okButton = new JButton("Guardar");
+		okButton.setFont(new Font("Lato", Font.PLAIN, 11));
 		buttonPane.add(okButton);
 		getRootPane().setDefaultButton(okButton);
 		
 		JButton cancelButton = new JButton("Cancelar");
+		cancelButton.setFont(new Font("Lato", Font.PLAIN, 11));
 		cancelButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
