@@ -1,8 +1,11 @@
 package controllers;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+
+import javax.swing.JButton;
 
 import views.VMain;
 import views.VMenu;
@@ -26,6 +29,7 @@ public class CMain implements ActionListener {
 		try {
 			conn = new JDBC("127.0.0.1", "restaurant", "root", "abc123");
 			vista.getSplitPane().setLeftComponent(vistaMenu);
+			vista.getSplitPane().setRightComponent(new JButton("Button"));
 			vistaMenu.getBtnMProductos().addActionListener(this);
 			vistaMenu.getBtnMPlatillos().addActionListener(this);
 			vistaMenu.getBtnMEmpleados().addActionListener(this);

@@ -33,6 +33,15 @@ public class VVentas extends JPanel {
 		btnNuevo = new JButton("Nueva Venta");
 		add(btnNuevo, "cell 1 2");
 		
+
+		btnAdd = new JButton("Agregar Platillo");
+		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
+		gbc_btnAdd.gridx = 1;
+		gbc_btnAdd.gridy = 0;
+		gbc_btnAdd.anchor = GridBagConstraints.EAST;
+		gbc_btnAdd.insets = new Insets(10, 0, 10, 0);
+		add(btnAdd, "cell 4 2");
+		
 		tableVentas = new JTable();
 		scrollPaneLista = new JScrollPane(tableVentas);
 		add(scrollPaneLista, "cell 1 3 3 1,grow");
@@ -49,11 +58,22 @@ public class VVentas extends JPanel {
 		gbl_pane.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		paneVenta.setLayout(gbl_pane);
 		
+		tablePlatillos = new JTable();
+		
+		scrollPaneP = new JScrollPane(tablePlatillos);
+		GridBagConstraints gbc_jtable = new GridBagConstraints();
+		gbc_jtable.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jtable.gridx = 0;
+		gbc_jtable.gridy = 0;
+		gbc_jtable.gridwidth = 2;
+		gbc_jtable.gridheight = 2;
+		paneVenta.add(scrollPaneP, gbc_jtable);
+		
 		GridBagConstraints gbc_lbl = new GridBagConstraints();
 		gbc_lbl.gridx = 0;
-		gbc_lbl.gridy = 0;
+		gbc_lbl.gridy = 2;
 		gbc_lbl.anchor = GridBagConstraints.EAST;
-		gbc_lbl.insets = new Insets(0, 15, 5, 15);
+		gbc_lbl.insets = new Insets(5, 0, 5, 0);
 		JLabel label = new JLabel("No. Mesa:");
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Lato", Font.PLAIN, 12));
@@ -64,16 +84,16 @@ public class VVentas extends JPanel {
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
+		gbc_textField.gridy = 2;
+		gbc_textField.insets = new Insets(5, 0, 5, 0);
 		paneVenta.add(txtNumMesa, gbc_textField);
 		txtNumMesa.setColumns(20);
 		
 		GridBagConstraints gbc_lbl2 = new GridBagConstraints();
 		gbc_lbl2.gridx = 0;
-		gbc_lbl2.gridy = 1;
+		gbc_lbl2.gridy = 3;
 		gbc_lbl2.anchor = GridBagConstraints.EAST;
-		gbc_lbl2.insets = new Insets(0, 15, 5, 15);
+		gbc_lbl2.insets = new Insets(0, 0, 5, 0);
 		JLabel label2 = new JLabel("Subtotal");
 		label2.setForeground(Color.WHITE);
 		label2.setFont(new Font("Lato", Font.PLAIN, 12));
@@ -84,7 +104,7 @@ public class VVentas extends JPanel {
 		GridBagConstraints gbc_textField2 = new GridBagConstraints();
 		gbc_textField2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField2.gridx = 1;
-		gbc_textField2.gridy = 1;
+		gbc_textField2.gridy = 3;
 		gbc_textField2.insets = new Insets(0, 0, 5, 0);
 		paneVenta.add(txtSubtotal, gbc_textField2);
 		txtSubtotal.setColumns(20);
@@ -93,9 +113,9 @@ public class VVentas extends JPanel {
 		
 		GridBagConstraints gbc_lbl3 = new GridBagConstraints();
 		gbc_lbl3.gridx = 0;
-		gbc_lbl3.gridy = 2;
+		gbc_lbl3.gridy = 4;
 		gbc_lbl3.anchor = GridBagConstraints.EAST;
-		gbc_lbl3.insets = new Insets(0, 15, 5, 15);
+		gbc_lbl3.insets = new Insets(0, 0, 5, 0);
 		JLabel label3 = new JLabel("IVA:");
 		label3.setForeground(Color.WHITE);
 		label3.setFont(new Font("Lato", Font.PLAIN, 12));
@@ -106,7 +126,7 @@ public class VVentas extends JPanel {
 		GridBagConstraints gbc_textField3 = new GridBagConstraints();
 		gbc_textField3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField3.gridx = 1;
-		gbc_textField3.gridy = 2;
+		gbc_textField3.gridy = 4;
 		gbc_textField3.insets = new Insets(0, 0, 5, 0);
 		paneVenta.add(txtIVA, gbc_textField3);
 		txtIVA.setColumns(20);
@@ -114,9 +134,9 @@ public class VVentas extends JPanel {
 		
 		GridBagConstraints gbc_lbl4 = new GridBagConstraints();
 		gbc_lbl4.gridx = 0;
-		gbc_lbl4.gridy = 3;
+		gbc_lbl4.gridy = 5;
 		gbc_lbl4.anchor = GridBagConstraints.EAST;
-		gbc_lbl4.insets = new Insets(0, 15, 5, 15);
+		gbc_lbl4.insets = new Insets(0, 0, 5, 0);
 		JLabel label4 = new JLabel("Total:");
 		label4.setForeground(Color.WHITE);
 		label4.setFont(new Font("Lato", Font.PLAIN, 12));
@@ -127,29 +147,11 @@ public class VVentas extends JPanel {
 		GridBagConstraints gbc_textField4 = new GridBagConstraints();
 		gbc_textField4.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField4.gridx = 1;
-		gbc_textField4.gridy = 3;
+		gbc_textField4.gridy = 5;
 		gbc_textField4.insets = new Insets(0, 0, 5, 0);
 		paneVenta.add(txtTotal, gbc_textField4);
 		txtTotal.setColumns(20);
 		txtTotal.setEnabled(false);
-		
-		btnAdd = new JButton("Agregar Platillo");
-		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
-		gbc_btnAdd.gridx = 1;
-		gbc_btnAdd.gridy = 4;
-		gbc_btnAdd.anchor = GridBagConstraints.EAST;
-		gbc_btnAdd.insets = new Insets(10, 0, 10, 0);
-		paneVenta.add(btnAdd, gbc_btnAdd);
-		
-		tablePlatillos = new JTable();
-		
-		scrollPaneP = new JScrollPane(tablePlatillos);
-		GridBagConstraints gbc_jtable = new GridBagConstraints();
-		gbc_jtable.fill = GridBagConstraints.HORIZONTAL;
-		gbc_jtable.gridx = 0;
-		gbc_jtable.gridy = 5;
-		gbc_jtable.gridwidth = 2;
-		paneVenta.add(scrollPaneP, gbc_jtable);
 		
 		btnGuardar = new JButton("Guardar");
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();

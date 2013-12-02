@@ -51,8 +51,10 @@ public class VMain {
 		frame.setMinimumSize(new Dimension(1100, 720));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		splitPane = new JSplitPane();
+		splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		splitPane.setBackground(Color.DARK_GRAY);
+		splitPane.setDividerSize(1);
+		splitPane.setDividerLocation(100);
 		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
 	}
 

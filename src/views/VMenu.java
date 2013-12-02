@@ -42,7 +42,7 @@ public class VMenu extends JPanel {
 	public VMenu() {
 		setForeground(Color.WHITE);
 		setBackground(Color.DARK_GRAY);
-		setLayout(new MigLayout("", "[grow,fill]", "[][][][][][][][][][][][][][][][][][][][][]"));
+		setLayout(new MigLayout("", "[][][][][][][][][][][][][][][][][][][][][]", "[grow,fill]"));
 		
 		btnMProductos = new JButton("Productos");
 		btnMProductos.addActionListener(new ActionListener() {
@@ -62,7 +62,7 @@ public class VMenu extends JPanel {
 		btnMPlatillos.setBackground(new Color(0, 153, 102));
 		btnMPlatillos.setFont(new Font("Lato", Font.PLAIN, 11));
 		btnMPlatillos.setBorder(new RoundedBorder(5));
-		add(btnMPlatillos, "cell 0 5");
+		add(btnMPlatillos, "cell 5 0");
 		
 		btnMEmpleados = new JButton("Empleados");
 		btnMEmpleados.setToolTipText("Inventario de Empleados");
@@ -70,7 +70,7 @@ public class VMenu extends JPanel {
 		btnMEmpleados.setBackground(new Color(0, 153, 102));
 		btnMEmpleados.setFont(new Font("Lato", Font.PLAIN, 11));
 		btnMEmpleados.setBorder(new RoundedBorder(5));
-		add(btnMEmpleados, "cell 0 10");
+		add(btnMEmpleados, "cell 10 0");
 		
 		btnMCompras = new JButton("Compras");
 		btnMCompras.setToolTipText("Inventario de Compras");
@@ -78,7 +78,7 @@ public class VMenu extends JPanel {
 		btnMCompras.setBackground(new Color(0, 153, 102));
 		btnMCompras.setFont(new Font("Lato", Font.PLAIN, 11));
 		btnMCompras.setBorder(new RoundedBorder(5));
-		add(btnMCompras, "cell 0 14");
+		add(btnMCompras, "cell 14 0");
 		
 		btnMVentas = new JButton("Ventas");
 		btnMVentas.setToolTipText("Lista de Ventas");
@@ -86,7 +86,7 @@ public class VMenu extends JPanel {
 		btnMVentas.setBackground(new Color(0, 153, 102));
 		btnMVentas.setFont(new Font("Lato", Font.PLAIN, 11));
 		btnMVentas.setBorder(new RoundedBorder(5));
-		add(btnMVentas, "cell 0 19");
+		add(btnMVentas, "cell 19 0");
 	}
 
 }
