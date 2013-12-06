@@ -1,7 +1,10 @@
 package views;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Font;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,11 +33,14 @@ public class VEmpleados extends JPanel {
 		add(btnNuevo, "cell 1 2");
 		
 		tableEmpleados = new JTable();
+<<<<<<< HEAD
 		tableEmpleados.setFont(new Font("Lato", Font.PLAIN, 11));
 		tableEmpleados.getTableHeader().setBackground(new Color(0, 153, 102));
 		tableEmpleados.getTableHeader().setFont(new Font("lato", Font.BOLD, 12));
 		tableEmpleados.getTableHeader().setForeground(Color.white);
 		tableEmpleados.setRowHeight(25);
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		scrollPaneLista = new JScrollPane(tableEmpleados);
 		add(scrollPaneLista, "cell 1 3 3 1,grow");
 	
@@ -118,13 +124,19 @@ public class VEmpleados extends JPanel {
 		gbc_textField.anchor = GridBagConstraints.EAST;
 		gbc_textField.fill = GridBagConstraints.NONE;
 		paneEmpleado.add(btnGuardar, gbc_textField);
+<<<<<<< HEAD
 		
 		
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	}
 	
 	public JTable addTableEmpleados(ModelTable modelPlatillos){
 		tableEmpleados.setModel(modelPlatillos);
+<<<<<<< HEAD
 		tableEmpleados.getColumnModel().getColumn(0).setMaxWidth(25);
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		return tableEmpleados;
 	}
 	

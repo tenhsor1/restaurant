@@ -4,9 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+<<<<<<< HEAD
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+=======
+import java.awt.Insets;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,12 +26,15 @@ import vectors.ModelTable;
 
 import com.toedter.calendar.JDateChooser;
 
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
 
 import java.awt.Dimension;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 public class VCompras extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -95,7 +102,10 @@ public class VCompras extends JPanel {
 		paneCompra.add(label_1, gbc_lbl2);
 		
 		txtCantidad = new JTextField();
+<<<<<<< HEAD
 		txtCantidad.setFont(new Font("Lato", Font.PLAIN, 12));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -136,6 +146,7 @@ public class VCompras extends JPanel {
 		label_3.setForeground(Color.WHITE);
 		paneCompra.add(label_3, gbc_lbl4);
 		
+<<<<<<< HEAD
 		//Icono Calendar
 		Image getCalicn = Toolkit.getDefaultToolkit().getImage(VLogin.class.getResource("/assets/calendar.png"));
 		Image sclCalicn = getCalicn.getScaledInstance(15, 15,  java.awt.Image.SCALE_SMOOTH);
@@ -147,13 +158,21 @@ public class VCompras extends JPanel {
 		dcCaducidad.getCalendarButton().setIcon(icnCal);
 		dcCaducidad.setForeground(Color.WHITE);
 		dcCaducidad.setBackground(Color.DARK_GRAY);
+=======
+		dcCaducidad = new JDateChooser();
+		dcCaducidad.setForeground(Color.WHITE);
+		dcCaducidad.setBackground(Color.GRAY);
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_comboBox3 = new GridBagConstraints();
 		gbc_comboBox3.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox3.gridx = 1;
 		gbc_comboBox3.gridy = 3;
 		paneCompra.add(dcCaducidad, gbc_comboBox3);
+<<<<<<< HEAD
 		dcCaducidad.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{dcCaducidad.getCalendarButton()}));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setFont(new Font("Lato", Font.PLAIN, 11));

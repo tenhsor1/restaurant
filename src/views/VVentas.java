@@ -31,12 +31,18 @@ public class VVentas extends JPanel {
 		setLayout(new MigLayout("", "[][][grow][grow]", "[][][][grow]"));
 		
 		btnNuevo = new JButton("Nueva Venta");
+<<<<<<< HEAD
 		btnNuevo.setFont(new Font("Lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		add(btnNuevo, "cell 1 2");
 		
 
 		btnAdd = new JButton("Agregar Platillo");
+<<<<<<< HEAD
 		btnAdd.setFont(new Font("Lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
 		gbc_btnAdd.gridx = 1;
 		gbc_btnAdd.gridy = 0;
@@ -71,6 +77,7 @@ public class VVentas extends JPanel {
 		gbc_jtable.gridheight = 2;
 		paneVenta.add(scrollPaneP, gbc_jtable);
 		
+<<<<<<< HEAD
 		GridBagConstraints gbc_lblNoMesa = new GridBagConstraints();
 		gbc_lblNoMesa.gridx = 0;
 		gbc_lblNoMesa.gridy = 2;
@@ -83,6 +90,19 @@ public class VVentas extends JPanel {
 		
 		txtNumMesa = new JTextField();
 		txtNumMesa.setFont(new Font("Lato", Font.PLAIN, 12));
+=======
+		GridBagConstraints gbc_lbl = new GridBagConstraints();
+		gbc_lbl.gridx = 0;
+		gbc_lbl.gridy = 2;
+		gbc_lbl.anchor = GridBagConstraints.EAST;
+		gbc_lbl.insets = new Insets(5, 0, 5, 0);
+		JLabel label = new JLabel("No. Mesa:");
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Lato", Font.PLAIN, 12));
+		paneVenta.add(label, gbc_lbl);
+		
+		txtNumMesa = new JTextField();
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -97,13 +117,20 @@ public class VVentas extends JPanel {
 		gbc_lbl2.gridy = 3;
 		gbc_lbl2.anchor = GridBagConstraints.EAST;
 		gbc_lbl2.insets = new Insets(0, 0, 5, 0);
+<<<<<<< HEAD
 		JLabel label2 = new JLabel("Subtotal:   ");
+=======
+		JLabel label2 = new JLabel("Subtotal");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		label2.setForeground(Color.WHITE);
 		label2.setFont(new Font("Lato", Font.PLAIN, 12));
 		paneVenta.add(label2, gbc_lbl2);
 		
 		txtSubtotal = new JTextField();
+<<<<<<< HEAD
 		txtSubtotal.setFont(new Font("Lato", Font.PLAIN, 12));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		
 		GridBagConstraints gbc_textField2 = new GridBagConstraints();
 		gbc_textField2.fill = GridBagConstraints.HORIZONTAL;
@@ -120,13 +147,20 @@ public class VVentas extends JPanel {
 		gbc_lbl3.gridy = 4;
 		gbc_lbl3.anchor = GridBagConstraints.EAST;
 		gbc_lbl3.insets = new Insets(0, 0, 5, 0);
+<<<<<<< HEAD
 		JLabel label3 = new JLabel("IVA:   ");
+=======
+		JLabel label3 = new JLabel("IVA:");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		label3.setForeground(Color.WHITE);
 		label3.setFont(new Font("Lato", Font.PLAIN, 12));
 		paneVenta.add(label3, gbc_lbl3);
 		
 		txtIVA = new JTextField();
+<<<<<<< HEAD
 		txtIVA.setFont(new Font("Lato", Font.PLAIN, 12));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		
 		GridBagConstraints gbc_textField3 = new GridBagConstraints();
 		gbc_textField3.fill = GridBagConstraints.HORIZONTAL;
@@ -142,13 +176,20 @@ public class VVentas extends JPanel {
 		gbc_lbl4.gridy = 5;
 		gbc_lbl4.anchor = GridBagConstraints.EAST;
 		gbc_lbl4.insets = new Insets(0, 0, 5, 0);
+<<<<<<< HEAD
 		JLabel label4 = new JLabel("Total:   ");
+=======
+		JLabel label4 = new JLabel("Total:");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		label4.setForeground(Color.WHITE);
 		label4.setFont(new Font("Lato", Font.PLAIN, 12));
 		paneVenta.add(label4, gbc_lbl4);
 		
 		txtTotal = new JTextField();
+<<<<<<< HEAD
 		txtTotal.setFont(new Font("Lato", Font.PLAIN, 12));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		
 		GridBagConstraints gbc_textField4 = new GridBagConstraints();
 		gbc_textField4.fill = GridBagConstraints.HORIZONTAL;
@@ -160,7 +201,10 @@ public class VVentas extends JPanel {
 		txtTotal.setEnabled(false);
 		
 		btnGuardar = new JButton("Guardar");
+<<<<<<< HEAD
 		btnGuardar.setFont(new Font("Lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
 		gbc_btnGuardar.gridx = 1;
 		gbc_btnGuardar.gridy = 6;

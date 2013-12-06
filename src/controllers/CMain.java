@@ -1,5 +1,6 @@
 package controllers;
 
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -9,30 +10,52 @@ import models.Usuarios.Usuario;
 import views.VMain;
 import views.VMenu;
 import views.VPortada;
+=======
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+
+import views.VMain;
+import views.VMenu;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import conn.JDBC;
 
 public class CMain implements ActionListener {
 	private static VMain vista;
 	private static VMenu vistaMenu;
+<<<<<<< HEAD
 	private static VPortada vistaPortada;
 	private Usuario usuario;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	private JDBC conn;
 	public static void main(String[] args) {
 
 	}
 	
+<<<<<<< HEAD
 	public CMain(Usuario usuario){
 		vista = new VMain();	
 		vista.iniciarVista();
 		vistaMenu = new VMenu();
 		vistaPortada = new VPortada();
 		this.usuario = usuario;
+=======
+	public CMain(){
+		vista = new VMain();	
+		vista.iniciarVista();
+		vistaMenu = new VMenu();
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	}
 	
 	public void iniciar(){
 		try {
 			conn = new JDBC("127.0.0.1", "restaurant", "root", "abc123");
 			vista.getSplitPane().setLeftComponent(vistaMenu);
+<<<<<<< HEAD
 			vista.getSplitPane().setRightComponent(vistaPortada);
 			
 			HashMap<Integer, Boolean> permisos = usuario.getPermisos();
@@ -64,12 +87,18 @@ public class CMain implements ActionListener {
 				col += 5;
 			}
 			
+=======
+			vista.getSplitPane().setRightComponent(new JButton("Button"));
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			vistaMenu.getBtnMProductos().addActionListener(this);
 			vistaMenu.getBtnMPlatillos().addActionListener(this);
 			vistaMenu.getBtnMEmpleados().addActionListener(this);
 			vistaMenu.getBtnMCompras().addActionListener(this);
 			vistaMenu.getBtnMVentas().addActionListener(this);
+<<<<<<< HEAD
 			vistaMenu.getBtnMUsuarios().addActionListener(this);
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,10 +126,13 @@ public class CMain implements ActionListener {
 		}else if(e.getSource().equals(vistaMenu.getBtnMVentas())){
 			CVentas cVentas = new CVentas(vista.getSplitPane(), conn);
 			cVentas.iniciar();
+<<<<<<< HEAD
 		
 		}else if(e.getSource().equals(vistaMenu.getBtnMUsuarios())){
 			CUsuarios cUsuarios = new CUsuarios(vista.getSplitPane(), conn);
 			cUsuarios.iniciar();
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		}
 	}
 }

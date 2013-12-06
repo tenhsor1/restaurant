@@ -1,13 +1,19 @@
 package views;
 
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.Cursor;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+<<<<<<< HEAD
 import javax.swing.BorderFactory;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,8 +21,11 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+<<<<<<< HEAD
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 import net.miginfocom.swing.MigLayout;
 
@@ -24,6 +33,7 @@ public class VLogin {
 
 	private JFrame frame; // Ventana contenedora
 	private JTextField txtUsuario;
+<<<<<<< HEAD
 	private JButton btnIniciar,btnMinimizar,btnCerrar;
 	private JLabel lblEncabezado, lblMensaje,lblIzquierda,lblDerecha,lblEspacio, lblFondo;
 	private JPasswordField txtPassword;
@@ -31,6 +41,11 @@ public class VLogin {
 	Border border;
 	
 
+=======
+	private JButton btnIniciar;
+	private JLabel lblMensaje;
+	private JPasswordField txtPassword;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	/**
 	 * @wbp.nonvisual location=29,119
 	 */
@@ -63,6 +78,7 @@ public class VLogin {
 		Image newImg = bufImg.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH); //generamos una nueva imagen pero escalda
 		
 		ImageIcon icnAlert = new ImageIcon(newImg); // generamos un icono para la etiqueta de mensaje lblMensaje
+<<<<<<< HEAD
 		//<Update> Hugo 28/11/2013
 		//Icono usuario
 		Image getUsericn = Toolkit.getDefaultToolkit().getImage(VLogin.class.getResource("/assets/user.png"));
@@ -90,6 +106,15 @@ public class VLogin {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VMain.class.getResource("/assets/UserLogin.png")));
 		frame.getContentPane().setBackground(new Color(236, 240, 241));
 		frame.setSize(300, 400);
+=======
+		
+		//inicializamos la ventana, gris, en el centro, con layout Mig
+		frame = new JFrame("Chez Michel - Iniciar Sesión");
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VMain.class.getResource("/assets/user.png")));
+		frame.getContentPane().setBackground(Color.DARK_GRAY);
+		frame.setBackground(Color.DARK_GRAY);
+		frame.setSize(450, 170);
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][grow][][][][][][grow]", "[][][][][][][][][grow][][][]"));
@@ -97,6 +122,7 @@ public class VLogin {
 		frame.setResizable(false);
 		//<EndUpdate> Hugo 27/11/2013
 		
+<<<<<<< HEAD
 		btnMinimizar = new JButton("  _");
 		btnMinimizar.requestFocus(false);
 		btnMinimizar.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -204,6 +230,47 @@ public class VLogin {
 		frame.getContentPane().add(lblMensaje, "cell 0 8, dock south");
 
 
+=======
+		
+		JLabel lblUsuario = new JLabel("Usuario");
+		//<Update> Hugo 27/11/2013
+		lblUsuario.setForeground(Color.WHITE);
+		lblUsuario.setFont(new Font("Lato", Font.PLAIN, 12));
+		//<EndUpdate> Hugo 27/11/2013
+		frame.getContentPane().add(lblUsuario, "cell 0 1");
+		
+		txtUsuario = new JTextField();
+		txtUsuario.setToolTipText("Ingresa tu Nombre de Usuario");
+		
+		frame.getContentPane().add(txtUsuario, "cell 1 1 7 1,growx");
+		txtUsuario.setColumns(10);
+		
+		JLabel lblPassword = new JLabel("Contrase\u00F1a");
+		//<Update> Hugo 27/11/2013
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Lato", Font.PLAIN, 12));
+		//<EndUpdate> Hugo 27/11/2013
+		frame.getContentPane().add(lblPassword, "cell 0 3");
+		
+		txtPassword = new JPasswordField();
+		txtPassword.setToolTipText("Ingrese su Password");
+		frame.getContentPane().add(txtPassword, "cell 1 3 7 1,growx,aligny top");
+		
+		btnIniciar = new JButton("Iniciar Sesi\u00F3n");
+		btnIniciar.setHorizontalAlignment(SwingConstants.RIGHT);
+		//<Update> Hugo 27/11/2013
+		btnIniciar.setFont(new Font("Lato", Font.PLAIN, 11));
+		//<EndUpdate> Hugo 27/11/2013
+		frame.getContentPane().add(btnIniciar, "cell 7 5,alignx right");
+		
+		lblMensaje = new JLabel("", icnAlert, JLabel.RIGHT);
+		//<Update> Hugo 27/11/2013
+		lblMensaje.setForeground(Color.WHITE);
+		lblMensaje.setFont(new Font("Lato", Font.PLAIN, 12));
+		//<EndUpdate> Hugo 27/11/2013
+		lblMensaje.setVisible(false);
+		frame.getContentPane().add(lblMensaje, "cell 0 7 8 1");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	}
 	public void close(){
 		frame.setVisible(false);
@@ -248,6 +315,7 @@ public class VLogin {
 	public void setLblMensaje(JLabel lblMensaje) {
 		this.lblMensaje = lblMensaje;
 	}
+<<<<<<< HEAD
 
 	public JButton getBtnMinimizar() {
 		return btnMinimizar;
@@ -281,4 +349,6 @@ public class VLogin {
 		this.lblDerecha = lblDerecha;
 	}
 	
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 }

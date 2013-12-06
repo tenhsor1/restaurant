@@ -1,5 +1,6 @@
 package controllers;
 
+<<<<<<< HEAD
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -14,16 +15,25 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+=======
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 import models.Usuarios;
 import models.Usuarios.Usuario;
 import views.VLogin;
 
+<<<<<<< HEAD
 public class CLogin implements ActionListener,FocusListener, KeyListener{
+=======
+public class CLogin implements ActionListener{
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 	private VLogin vista;
 	private Usuarios modelo;
 	private Usuario usuario;
+<<<<<<< HEAD
 	private JButton btnCerrar, btnIniciar, btnMinimizar;
 	public CLogin(VLogin vista, Usuarios modelo){
 		this.iniciarFuentes();
@@ -121,4 +131,28 @@ public class CLogin implements ActionListener,FocusListener, KeyListener{
 		
 	}
 	
+=======
+	public CLogin(VLogin vista, Usuarios modelo){
+		this.vista = vista;
+		this.modelo = modelo;
+		this.vista.getBtnIniciar().addActionListener(this);
+	}
+	
+	public void iniciarVista(){
+		this.vista.getFrame().setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		usuario = this.modelo.authUsuario(this.vista.getTxtUsuario().getText(), this.vista.getTxtPassword().getText());
+		if(usuario != null){
+			this.vista.close();
+			CMain cMain = new CMain();
+			cMain.iniciar();
+		}else{
+			this.vista.getLblMensaje().setText("El usuario o contraseña no es correcto.");
+		}
+		this.vista.getLblMensaje().setVisible(true);
+	}
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 }

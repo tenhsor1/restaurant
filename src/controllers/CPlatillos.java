@@ -1,8 +1,11 @@
 package controllers;
 
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.Image;
 import java.awt.Toolkit;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,14 +13,20 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+<<<<<<< HEAD
 import javax.swing.border.EmptyBorder;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import javax.swing.table.DefaultTableModel;
 
 import models.Platillos;
@@ -30,7 +39,10 @@ import vectors.EditorCell;
 import vectors.Item;
 import vectors.ModelTable;
 import vectors.RenderCell;
+<<<<<<< HEAD
 import views.VLogin;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import views.VPlatillos;
 import conn.JDBC;
 
@@ -89,6 +101,7 @@ public class CPlatillos implements ActionListener{
 		int numPlatillos = listaPlatillos.size();
 		Object[][] plats = new Object[numPlatillos][4];
 		
+<<<<<<< HEAD
 		//Icono Editar
 		Image getEditaricn = Toolkit.getDefaultToolkit().getImage(VLogin.class.getResource("/assets/Editar.png"));
 		Image setEditaricn = getEditaricn.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
@@ -98,11 +111,14 @@ public class CPlatillos implements ActionListener{
 		Image setEliminaricn = getEliminaricn.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
 		ImageIcon icnEliminar	= new ImageIcon(setEliminaricn);//icono Eliminar
 		
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		int i = 0;
 		for(final Platillo p : listaPlatillos){
 			plats[i][0] = p.getIdplatillo();
 			plats[i][1] = p.getPlatillo();
 			
+<<<<<<< HEAD
 			btnEditar = new JButton("");
 			btnEditar.setIcon(icnEditar);
 			btnEditar.setToolTipText("Editar Platillo");
@@ -111,6 +127,9 @@ public class CPlatillos implements ActionListener{
 			btnEditar.setContentAreaFilled(false);
 			btnEditar.setBorder(new EmptyBorder(0, 0, 0, 0));
 			//Importante
+=======
+			btnEditar = new JButton("Editar");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			btnEditar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -120,6 +139,7 @@ public class CPlatillos implements ActionListener{
 			});
 			plats[i][2] = btnEditar;
 			
+<<<<<<< HEAD
 			btnEliminar = new JButton("");
 			btnEliminar.setIcon(icnEliminar);
 			btnEliminar.setToolTipText("Eliminar Platillo");
@@ -128,6 +148,9 @@ public class CPlatillos implements ActionListener{
 			btnEliminar.setContentAreaFilled(false);
 			btnEliminar.setBorder(new EmptyBorder(0, 0, 0, 0));
 			//Importante
+=======
+			btnEliminar = new JButton("Eliminar");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			btnEliminar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

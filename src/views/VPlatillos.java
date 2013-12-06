@@ -1,7 +1,10 @@
 package views;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Font;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -39,12 +42,18 @@ public class VPlatillos extends JPanel {
 		setLayout(new MigLayout("", "[][][grow][grow]", "[][][][grow]"));
 		
 		btnNuevoPlatillo = new JButton("Nuevo Platillo");
+<<<<<<< HEAD
 		btnNuevoPlatillo.setFont(new Font("lato", Font.PLAIN, 11));
 		add(btnNuevoPlatillo, "cell 1 2");
 		
 		tablePlatillos = new JTable();
 		tablePlatillos.setFont(new Font("lato", Font.PLAIN, 11));
 		tablePlatillos.setAlignmentX(CENTER_ALIGNMENT);
+=======
+		add(btnNuevoPlatillo, "cell 1 2");
+		
+		tablePlatillos = new JTable();
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		scrollPaneLista = new JScrollPane(tablePlatillos);
 		add(scrollPaneLista, "cell 1 3 1 1,grow");
 	
@@ -67,7 +76,10 @@ public class VPlatillos extends JPanel {
 		paneProducto.add(new JLabel("Platillo:"), gbc_lbl);
 		
 		txtPlatillo = new JTextField();
+<<<<<<< HEAD
 		txtPlatillo.setFont(new Font("lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
@@ -79,7 +91,10 @@ public class VPlatillos extends JPanel {
 		paneProducto.add(new JLabel("Precio:"), gbc_lbl);
 		
 		txtPrecio = new JTextField();
+<<<<<<< HEAD
 		txtPrecio.setFont(new Font("lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		gbc_textField.gridy = 1;
 		gbc_textField.fill = GridBagConstraints.NONE;
 		gbc_textField.anchor = GridBagConstraints.WEST;
@@ -88,7 +103,10 @@ public class VPlatillos extends JPanel {
 		
 		
 		btnAddProducto = new JButton("Agregar Producto");
+<<<<<<< HEAD
 		btnAddProducto.setFont(new Font("lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
 		gbc_btnAdd.gridx = 1;
 		gbc_btnAdd.gridy = 2;
@@ -99,7 +117,10 @@ public class VPlatillos extends JPanel {
 		tableProdPlatillos = new JTable();
 		
 		scrollPaneProdP = new JScrollPane(tableProdPlatillos);
+<<<<<<< HEAD
 		scrollPaneProdP.setFont(new Font("lato", Font.PLAIN, 13));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_jtable = new GridBagConstraints();
 		gbc_jtable.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtable.gridx = 0;
@@ -108,7 +129,10 @@ public class VPlatillos extends JPanel {
 		paneProducto.add(scrollPaneProdP, gbc_jtable);
 		
 		btnGuardarPlatillo = new JButton("Guardar");
+<<<<<<< HEAD
 		btnGuardarPlatillo.setFont(new Font("lato", Font.PLAIN, 11));
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
 		gbc_btnGuardar.gridx = 1;
 		gbc_btnGuardar.gridy = 4;
@@ -128,6 +152,7 @@ public class VPlatillos extends JPanel {
 
 	public JTable addTablePlatillos(ModelTable modelPlatillos){
 		tablePlatillos.setModel(modelPlatillos);
+<<<<<<< HEAD
 		tablePlatillos.getTableHeader().setBackground(new Color(0, 153, 102));
 		tablePlatillos.getTableHeader().setFont(new Font("lato", Font.BOLD, 12));
 		tablePlatillos.getTableHeader().setForeground(Color.white);
@@ -136,16 +161,21 @@ public class VPlatillos extends JPanel {
 		tablePlatillos.getColumnModel().getColumn(2).setMaxWidth(30);
 		tablePlatillos.getColumnModel().getColumn(3).setMaxWidth(30);
 		
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		return tablePlatillos;
 	}
 	
 	public JTable addTableProdPlatillos(DefaultTableModel modelProdPlatillos){
 		tableProdPlatillos.setModel(modelProdPlatillos);
+<<<<<<< HEAD
 		tableProdPlatillos.getTableHeader().setBackground(new Color(0, 153, 102));
 		tableProdPlatillos.getTableHeader().setFont(new Font("lato", Font.BOLD, 12));
 		tableProdPlatillos.getTableHeader().setForeground(Color.white);
 		tableProdPlatillos.setRowHeight(30);
 		tableProdPlatillos.getColumnModel().getColumn(0).setMaxWidth(40);
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		return tableProdPlatillos;
 	}
 	

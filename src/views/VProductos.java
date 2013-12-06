@@ -33,6 +33,7 @@ public class VProductos extends JPanel {
 	private VFormProducto panelProducto;
 	private VFormCategoria panelCategoria;
 	public VProductos() {
+<<<<<<< HEAD
 		setLayout(new MigLayout("", "[][grow][grow][grow]", "[][][][grow]"));
 		setBackground(new Color(236, 240, 241));
 		
@@ -46,6 +47,18 @@ public class VProductos extends JPanel {
 		
 		panelProducto = new VFormProducto();
 		panelProducto.setTitle("Agregar nuevo producto");
+=======
+		setLayout(new MigLayout("", "[][][grow][grow]", "[][][][grow]"));
+		setBackground(Color.DARK_GRAY);
+		
+		btnNuevoProducto = new JButton("Nuevo Producto");
+		add(btnNuevoProducto, "cell 2 2");
+		
+		btnNuevaCategoria = new JButton("Nueva Categoría");
+		add(btnNuevaCategoria, "cell 4 2");
+		
+		panelProducto = new VFormProducto();
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		panelProducto.getTxtProducto().addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent evt) {
@@ -68,6 +81,7 @@ public class VProductos extends JPanel {
 
 	public JTable addTableProductos(ModelTable modelProductos){
 		tableProductos = new JTable(modelProductos);
+<<<<<<< HEAD
 		tableProductos.setFont(new Font("Lato", Font.PLAIN, 11));
 		tableProductos.getTableHeader().setBackground(new Color(0, 153, 102));
 		tableProductos.getTableHeader().setFont(new Font("lato", Font.BOLD, 12));
@@ -81,11 +95,16 @@ public class VProductos extends JPanel {
 		scrollPaneProductos.setOpaque(false);
 		scrollPaneProductos.setBorder(new EmptyBorder(0, 0, 0, 0));
 		add(scrollPaneProductos, "cell 1 2 2 1, grow");
+=======
+		scrollPaneProductos = new JScrollPane(tableProductos);
+		add(scrollPaneProductos, "cell 2 3 2 1,grow");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		return tableProductos;
 	}
 	
 	public JTable addTableCategorias(ModelTable modelCategorias){
 		tableCategorias = new JTable(modelCategorias);
+<<<<<<< HEAD
 		tableCategorias.setFont(new Font("Lato", Font.PLAIN, 11));
 		tableCategorias.getTableHeader().setBackground(new Color(0, 153, 102));
 		tableCategorias.getTableHeader().setFont(new Font("lato", Font.BOLD, 12));
@@ -98,6 +117,10 @@ public class VProductos extends JPanel {
 		scrollPaneCategorias.setOpaque(false);
 		scrollPaneCategorias.setBorder(new EmptyBorder(0, 0, 0, 0));
 		add(scrollPaneCategorias, "cell 4 2,alignx left, grow");
+=======
+		scrollPaneCategorias = new JScrollPane(tableCategorias);
+		add(scrollPaneCategorias, "cell 4 3,grow");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		return tableCategorias;
 	}
 	

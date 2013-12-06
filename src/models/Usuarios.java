@@ -2,18 +2,26 @@ package models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashMap;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 import conn.JDBC;
 
 public class Usuarios {
+<<<<<<< HEAD
 	static ResultSet result, query;
+=======
+	static ResultSet result;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	private JDBC conn;
 	
 	public Usuarios(JDBC conn){
 			this.conn = conn;
 	}
+<<<<<<< HEAD
 	public ArrayList<Usuario> getAllUsuarios(){
 		query = conn.query("SELECT idusuario FROM usuarios WHERE idstatus = 1");
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
@@ -27,6 +35,10 @@ public class Usuarios {
 			e.printStackTrace();
 			return null;
 		}
+=======
+	public ResultSet getAllUsuarios(){
+		return conn.query("SELECT * FROM usuarios");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	}
 	
 	public Usuario authUsuario(String username, String password){
@@ -35,7 +47,11 @@ public class Usuarios {
 		try {
 			if(result.next()){
 				int idusuario = result.getInt("idusuario");
+<<<<<<< HEAD
 				return new Usuario(conn, idusuario);
+=======
+				return new Usuario(idusuario);
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			}else{
 				return null;
 			}
@@ -45,6 +61,7 @@ public class Usuarios {
 		}
 	}
 	
+<<<<<<< HEAD
 	public int deleteUsuario(Usuario usuario){
 		String sql = "UPDATE usuarios SET idstatus = 0 WHERE idusuario = " + usuario.getIdusuario();
 		return this.conn.queryUpdate(sql);
@@ -101,6 +118,49 @@ public class Usuarios {
 				}
 			}else{
 				this.error = true;
+=======
+	public class Usuario{
+
+		private int numResults;
+		private ResultSet query, idu;
+		private String username, password, nombre, appat, apmat, direccion, tel;
+		private int idusuario, idstatus;
+		public Usuario(int idusuariop) throws SQLException{
+			query = conn.query("SELECT idusuario, username, password,nombre, appat, apmat, direccion, tel, idstatus FROM usuarios WHERE idusuario = " + idusuariop);
+			if(query.next()){ 	
+			 	idusuario = query.getInt("idusuario");
+				 username = query.getString("username");
+				 password = query.getString("password");
+				 nombre = query.getString("nombre");
+				 appat = query.getString("appat");
+				 apmat = query.getString("apmat");
+				 direccion = query.getString("direccion");
+				 tel = query.getString("tel");
+				 idstatus = query.getInt("idstatus");
+			}
+		}
+		
+		public Usuario(String username, String password, String nombre, String appat, String apmat, String direccion, String tel, int idstatus){
+			String sql = "INSERT INTO usuarios (username, password,nombre, appat, apmat, direccion, tel, idstatus) VALUES(" +
+					username + ", " + password + ", " + nombre + ", " + appat + ", " + apmat + ", " + direccion +
+					 ", " + tel + ", " + idstatus + ")";
+			numResults = conn.queryUpdate(sql);
+			if(numResults > 0){
+				idu = conn.query("SELECT MAX(idusuario) FROM usuarios");
+				try {
+					idusuario = idu.getInt(0);
+					this.username = username; 
+					this.password = password; 
+					this.nombre = nombre; 
+					this.appat = appat; 
+					this.apmat = apmat; 
+					this.direccion = direccion; 
+					this.tel = tel;
+					this.idstatus = idstatus;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			}
 		}
 	
@@ -110,6 +170,7 @@ public class Usuarios {
 		}
 
 		public void setUsername(String username) {
+<<<<<<< HEAD
 			if(!existeUsuario(username)){
 				this.error = true;
 			}else{
@@ -120,16 +181,25 @@ public class Usuarios {
 				}
 			}
 		}
+=======
+			this.username = username;
+		}
+
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		public String getNombre() {
 			return nombre;
 		}
 
 		public void setNombre(String nombre) {
+<<<<<<< HEAD
 			results = conn.queryUpdate("UPDATE usuarios SET nombre = '" + 
 					nombre + "' WHERE idusuario = " + idusuario);
 			if(results > 0){
 				this.nombre = nombre;
 			}
+=======
+			this.nombre = nombre;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		}
 
 		public String getAppat() {
@@ -137,11 +207,15 @@ public class Usuarios {
 		}
 
 		public void setAppat(String appat) {
+<<<<<<< HEAD
 			results = conn.queryUpdate("UPDATE usuarios SET appat = '" + 
 					appat + "' WHERE idusuario = " + idusuario);
 			if(results > 0){
 				this.appat = appat;
 			}
+=======
+			this.appat = appat;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		}
 
 		public String getApmat() {
@@ -149,6 +223,7 @@ public class Usuarios {
 		}
 
 		public void setApmat(String apmat) {
+<<<<<<< HEAD
 			results = conn.queryUpdate("UPDATE usuarios SET apmat = '" + 
 					apmat + "' WHERE idusuario = " + idusuario);
 			if(results > 0){
@@ -156,27 +231,58 @@ public class Usuarios {
 			}
 		}
 
+=======
+			this.apmat = apmat;
+		}
+
+		public String getDireccion() {
+			return direccion;
+		}
+
+		public void setDireccion(String direccion) {
+			this.direccion = direccion;
+		}
+
+		public String getTel() {
+			return tel;
+		}
+
+		public void setTel(String tel) {
+			this.tel = tel;
+		}
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 		public String getPassword() {
 			return password;
 		}
 
 		public void setPassword(String password) {
+<<<<<<< HEAD
 			results = conn.queryUpdate("UPDATE usuarios SET password = '" + 
 					password + "' WHERE idusuario = " + idusuario);
 			if(results > 0){
 				this.password = password;
 			}
+=======
+			this.password = tel;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		}
 		
 		public int getIdusuario() {
 			return idusuario;
 		}
 
+<<<<<<< HEAD
+=======
+		public void setIdusuario(int idusuario) {
+			this.idusuario = idusuario;
+		}
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 		public int getIdstatus() {
 			return idstatus;
 		}
+<<<<<<< HEAD
 		
 		public boolean isError() {
 			return error;
@@ -220,6 +326,11 @@ public class Usuarios {
 				e1.printStackTrace();
 			}
 			return band != 0;
+=======
+
+		public void setIdstatus(int idstatus) {
+			this.idstatus = idstatus;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		}
 		
 	}

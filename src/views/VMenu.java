@@ -2,6 +2,7 @@ package views;
 
 import java.awt.Color;
 import java.awt.Font;
+<<<<<<< HEAD
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,18 @@ public class VMenu extends JPanel {
 		return btnMUsuarios;
 	}
 
+=======
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import net.miginfocom.swing.MigLayout;
+import vectors.RoundedBorder;
+
+public class VMenu extends JPanel {
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	public JButton getBtnMVentas() {
 		return btnMVentas;
 	}
@@ -40,7 +53,11 @@ public class VMenu extends JPanel {
 		return btnMPlatillos;
 	}
 
+<<<<<<< HEAD
 	private JButton btnMPlatillos,  btnMEmpleados, btnMCompras, btnMProductos, btnMVentas, btnMUsuarios;
+=======
+	private JButton btnMPlatillos,  btnMEmpleados, btnMCompras, btnMProductos, btnMVentas;
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	private static final long serialVersionUID = 9014536977897804075L;
 
 	/**
@@ -48,6 +65,7 @@ public class VMenu extends JPanel {
 	 */
 	public VMenu() {
 		setForeground(Color.WHITE);
+<<<<<<< HEAD
 		setBackground(new Color(0, 74, 97));
 		setLayout(new MigLayout("", "[][][][][][][][][][][][][][][][][][][][][][][][][][]", "[fill]"));
 		
@@ -93,12 +111,19 @@ public class VMenu extends JPanel {
 		//Importante
 		btnMProductos.setRolloverIcon(new ImageIcon(VMenu.class.getResource("/assets/ProductosRollOver.png")));
 		btnMProductos.setIcon(new ImageIcon(VMenu.class.getResource("/assets/Productos.png")));
+=======
+		setBackground(Color.DARK_GRAY);
+		setLayout(new MigLayout("", "[][][][][][][][][][][][][][][][][][][][][]", "[grow,fill]"));
+		
+		btnMProductos = new JButton("Productos");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		btnMProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnMProductos.setToolTipText("Inventario de Productos");
 		btnMProductos.setForeground(Color.WHITE);
+<<<<<<< HEAD
 		btnMProductos.setFont(new Font("Lato", Font.PLAIN, 11));
 		//add(btnMProductos,"cell 0 0");
 		
@@ -110,10 +135,19 @@ public class VMenu extends JPanel {
 		//Importante
 		btnMPlatillos.setRolloverIcon(icnPlatilloRO);
 		btnMPlatillos.setIcon(icnPlatillo);
+=======
+		btnMProductos.setBackground(new Color(0, 153, 102));
+		btnMProductos.setFont(new Font("Lato", Font.PLAIN, 11));
+		btnMProductos.setBorder(new RoundedBorder(5));
+		add(btnMProductos, "cell 0 0");
+		
+		btnMPlatillos = new JButton("Platillos");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		btnMPlatillos.setToolTipText("Inventario de Platillos");
 		btnMPlatillos.setForeground(Color.WHITE);
 		btnMPlatillos.setBackground(new Color(0, 153, 102));
 		btnMPlatillos.setFont(new Font("Lato", Font.PLAIN, 11));
+<<<<<<< HEAD
 		//add(btnMPlatillos, "cell 5 0");
 		
 		btnMEmpleados = new JButton("Empleados");
@@ -124,10 +158,17 @@ public class VMenu extends JPanel {
 		//Importante
 		btnMEmpleados.setRolloverIcon(icnEmpleadoRO);
 		btnMEmpleados.setIcon(icnEmpleado);
+=======
+		btnMPlatillos.setBorder(new RoundedBorder(5));
+		add(btnMPlatillos, "cell 5 0");
+		
+		btnMEmpleados = new JButton("Empleados");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		btnMEmpleados.setToolTipText("Inventario de Empleados");
 		btnMEmpleados.setForeground(Color.WHITE);
 		btnMEmpleados.setBackground(new Color(0, 153, 102));
 		btnMEmpleados.setFont(new Font("Lato", Font.PLAIN, 11));
+<<<<<<< HEAD
 		//add(btnMEmpleados, "cell 10 0");
 		
 		btnMVentas = new JButton("Ventas");
@@ -150,10 +191,17 @@ public class VMenu extends JPanel {
 		btnMCompras.setContentAreaFilled(false);
 		btnMCompras.setBorder(new EmptyBorder(0, 0, 0, 0));
 		//Importante
+=======
+		btnMEmpleados.setBorder(new RoundedBorder(5));
+		add(btnMEmpleados, "cell 10 0");
+		
+		btnMCompras = new JButton("Compras");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		btnMCompras.setToolTipText("Inventario de Compras");
 		btnMCompras.setForeground(Color.WHITE);
 		btnMCompras.setBackground(new Color(0, 153, 102));
 		btnMCompras.setFont(new Font("Lato", Font.PLAIN, 11));
+<<<<<<< HEAD
 		btnMCompras.setIcon(icnCompras);
 		btnMCompras.setRolloverIcon(icnComprasRO);
 		//add(btnMCompras, "cell 20 0");
@@ -161,6 +209,18 @@ public class VMenu extends JPanel {
 		btnMUsuarios = new JButton("Usuarios");
 		//add(btnMUsuarios, "cell 25 0");
 		
+=======
+		btnMCompras.setBorder(new RoundedBorder(5));
+		add(btnMCompras, "cell 14 0");
+		
+		btnMVentas = new JButton("Ventas");
+		btnMVentas.setToolTipText("Lista de Ventas");
+		btnMVentas.setForeground(Color.WHITE);
+		btnMVentas.setBackground(new Color(0, 153, 102));
+		btnMVentas.setFont(new Font("Lato", Font.PLAIN, 11));
+		btnMVentas.setBorder(new RoundedBorder(5));
+		add(btnMVentas, "cell 19 0");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 	}
 
 }

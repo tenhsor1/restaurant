@@ -1,8 +1,11 @@
 package controllers;
 
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.Image;
 import java.awt.Toolkit;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -10,14 +13,20 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
+<<<<<<< HEAD
 import javax.swing.border.EmptyBorder;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 
 import models.Productos;
 import models.Productos.Categoria;
@@ -26,7 +35,10 @@ import vectors.EditorCell;
 import vectors.Item;
 import vectors.ModelTable;
 import vectors.RenderCell;
+<<<<<<< HEAD
 import views.VLogin;
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 import views.VProductos;
 import views.VProductos.VFormCategoria;
 import views.VProductos.VFormProducto;
@@ -68,7 +80,10 @@ public class CProductos implements ActionListener{
 		tablaCategorias.setDefaultRenderer(JButton.class, new RenderCell());
 		tablaCategorias.setDefaultEditor(JButton.class, new EditorCell());
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		btnNuevoProducto = vistaProductos.getBtnNuevoProducto();
 		btnNuevoProducto.addActionListener(new ActionListener() {	
 			@Override
@@ -102,6 +117,7 @@ public class CProductos implements ActionListener{
 		int numProductos = listaProds.size();
 		Object[][] prods = new Object[numProductos][5];
 		
+<<<<<<< HEAD
 		//Icono Editar
 		Image getEditaricn = Toolkit.getDefaultToolkit().getImage(VLogin.class.getResource("/assets/Editar.png"));
 		Image setEditaricn = getEditaricn.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
@@ -111,12 +127,15 @@ public class CProductos implements ActionListener{
 		Image setEliminaricn = getEliminaricn.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
 		ImageIcon icnEliminar	= new ImageIcon(setEliminaricn);//icono Eliminar
 		
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		int i = 0;
 		for(final Producto p : listaProds){
 			prods[i][0] = p.getIdproducto();
 			prods[i][1] = p.getProducto();
 			prods[i][2] = p.getCategoria();
 			
+<<<<<<< HEAD
 			btnEditar = new JButton("");
 			btnEditar.setIcon(icnEditar);
 			btnEditar.setToolTipText("Editar Producto");
@@ -125,6 +144,9 @@ public class CProductos implements ActionListener{
 			btnEditar.setContentAreaFilled(false);
 			btnEditar.setBorder(new EmptyBorder(0, 0, 0, 0));
 			//Importante
+=======
+			btnEditar = new JButton("Editar");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			btnEditar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -138,6 +160,7 @@ public class CProductos implements ActionListener{
 			});
 			prods[i][3] = btnEditar;
 			
+<<<<<<< HEAD
 			btnEliminar = new JButton("");
 			btnEliminar.setIcon(icnEliminar);
 			btnEliminar.setToolTipText("Eliminar Producto");
@@ -146,6 +169,9 @@ public class CProductos implements ActionListener{
 			btnEliminar.setContentAreaFilled(false);
 			btnEliminar.setBorder(new EmptyBorder(0, 0, 0, 0));
 			//Importante
+=======
+			btnEliminar = new JButton("Eliminar");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			btnEliminar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -169,6 +195,7 @@ public class CProductos implements ActionListener{
 		int numCategorias = listaCats.size();
 		Object[][] cats = new Object[numCategorias][4];
 		
+<<<<<<< HEAD
 		//Icono Editar
 		Image getEditaricn = Toolkit.getDefaultToolkit().getImage(VLogin.class.getResource("/assets/Editar.png"));
 		Image setEditaricn = getEditaricn.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
@@ -178,11 +205,14 @@ public class CProductos implements ActionListener{
 		Image setEliminaricn = getEliminaricn.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
 		ImageIcon icnEliminar	= new ImageIcon(setEliminaricn);//icono Eliminar
 		
+=======
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 		int i = 0;
 		for(final Categoria c : listaCats){
 			cats[i][0] = c.getIdcategoria();
 			cats[i][1] = c.getCategoria();
 			
+<<<<<<< HEAD
 			btnEditar= new JButton("");
 			btnEditar.setIcon(icnEditar);
 			btnEditar.setToolTipText("Editar Categoría");
@@ -191,6 +221,9 @@ public class CProductos implements ActionListener{
 			btnEditar.setContentAreaFilled(false);
 			btnEditar.setBorder(new EmptyBorder(0, 0, 0, 0));
 			//Importante
+=======
+			btnEditar= new JButton("Editar");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			btnEditar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -204,6 +237,7 @@ public class CProductos implements ActionListener{
 			});
 			cats[i][2] = btnEditar;
 			
+<<<<<<< HEAD
 			btnEliminar = new JButton("");
 			btnEliminar.setIcon(icnEliminar);
 			btnEliminar.setToolTipText("Eliminar  Categoría");
@@ -212,6 +246,9 @@ public class CProductos implements ActionListener{
 			btnEliminar.setContentAreaFilled(false);
 			btnEliminar.setBorder(new EmptyBorder(0, 0, 0, 0));
 			//Importante
+=======
+			btnEliminar = new JButton("Eliminar");
+>>>>>>> fccb445ea459b2d5e7edb3c07a741b7625a3df5c
 			btnEliminar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
